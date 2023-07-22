@@ -1,86 +1,41 @@
-import  { useEffect, useState } from 'react';
-import banner1 from '../../images/banner/banner1.png'
+import React from "react";
+import banner1 from "../../images/banner/banner1.png"; // Ensure the correct image path
 
 const Banner = () => {
-  const [currentSlide, setCurrentSlide] = useState(1);
-
-  useEffect(() => {
-    const sliderInterval = setInterval(() => {
-      setCurrentSlide((prevSlide) => (prevSlide === 1 ? 2 : 1));
-    }, 8000);
-
-    return () => clearInterval(sliderInterval);
-  }, []);
-
-  const sliderButton1 = () => {
-    setCurrentSlide(1);
-  };
-
-  const sliderButton2 = () => {
-    setCurrentSlide(2);
-  };
-
   return (
-    <div className="slider max-w-full h-screen relative overflow-hidden">
-      <div
-        id="slider-1"
-        className={`container mx-auto slider-item absolute top-0 left-0 right-0 bottom-0 ${currentSlide === 1 ? 'opacity-100' : 'opacity-0'} transition-opacity`}
-      >
-        <div className="w-full h-full relative">
-          <img
-            src={banner1}
-            alt="Slider 1"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute top-1/2 px-20 transform -translate-y-1/2 text-white text-left mx-10">
-            <p className="text-sm uppercase font-bold">Services</p>
-            <p className="text-3xl font-bold">Hello world</p>
-            <p className="text-xl mb-10 leading-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a
-              href="#"
-              className="bg-purple-800 py-3 px-6 text-white font-bold uppercase rounded hover:bg-purple-600"
-            >
-              Learn More
-            </a>
-          </div>
-        </div>
-      </div>
-      <br />
-      <div
-        id="slider-2"
-        className={`container mx-auto slider-item absolute top-0 left-0 right-0 bottom-0 ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'} transition-opacity`}
-      >
-        <div className="w-full h-full relative">
-          <img
-            src="https://images.unsplash.com/photo-1544144433-d50aff500b91?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
-            alt="Slider 2"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute top-1/2 px-20 transform -translate-y-1/2 text-white text-left mx-10">
-            <p className="text-sm uppercase font-bold">Services</p>
-            <p className="text-3xl font-bold">Hello world</p>
-            <p className="text-xl mb-10 leading-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a
-              href="#"
-              className="bg-purple-800 py-3 px-6 text-white font-bold uppercase rounded hover:bg-purple-600"
-            >
-              Learn More
-            </a>
-          </div>
+    <div
+      className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 md:p-8 lg:p-12 bg-gradient-to-r from-blue-400 to-emerald-400 pt-16"
+
+    >
+      {/* Left side */}
+      <div className="flex flex-col justify-center lg:px-28 text-white">
+        <h1 className="text-4xl lg:text-6xl font-bold text-gray-100 lg:mb-8 ">
+          Welcome to Scholars For Search
+        </h1>
+        <p className="text-lg lg:text-xl mt-4">
+          Our college booking admission services offer personalized guidance and support
+          throughout your college application journey. With our experienced advisors
+          and seamless online platform, let us simplify the process and open doors
+          to your dream college.
+        </p>
+        <div className="mt-8 space-x-4">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Explore Admission
+          </button>
+          <button className="bg-lime-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Learn More
+          </button>
         </div>
       </div>
 
-      <div className="flex justify-between w-12 mx-auto pb-2 absolute bottom-0 left-0 right-0">
-        <button
-          id="sButton1"
-          onClick={sliderButton1}
-          className={`bg-purple-400 rounded-full w-4 pb-2 ${currentSlide === 1 ? 'bg-purple-800' : ''}`}
-        ></button>
-        <button
-          id="sButton2"
-          onClick={sliderButton2}
-          className={`bg-purple-400 rounded-full w-4 p-2 ${currentSlide === 2 ? 'bg-purple-800' : ''}`}
-        ></button>
+      {/* Right side */}
+      <div className="flex justify-center items-center">
+        {/* Check if the image is loaded correctly */}
+        <img
+          className="w-full lg:w-3/4 rounded-lg"
+          src={banner1}
+          alt="Banner"
+        />
       </div>
     </div>
   );

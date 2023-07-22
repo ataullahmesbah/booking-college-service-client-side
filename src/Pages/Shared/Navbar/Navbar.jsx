@@ -10,8 +10,8 @@ const Navbar = () => {
 
         // Scholars For Search
 
-        <div className="fixed w-full z-10 shadow-sm bg-gradient-to-r from-gray-400 to-slate-300">
-            <div className="py-4 border-b-2">
+        <div className="fixed w-full z-10 shadow-sm bg-gradient-to-r from-emerald-300 to-blue-400">
+            <div className="py-4 ">
                 <Container>
                     <div className="flex flex-row items-center gap-4 md:gap-0 justify-between">
 
