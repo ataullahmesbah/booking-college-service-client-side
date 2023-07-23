@@ -9,6 +9,7 @@ import InfoColleges from "../Pages/College/InfoColleges";
 import Admission from "../Pages/Admission/Admission";
 import AppliedCollege from "../Pages/AppliedCollege/AppliedCollege";
 import PrivateRoute from "./PrivateRoute";
+import MyCollege from "../Pages/MyCollege/MyCollege";
 
 
 export const router = createBrowserRouter([
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <AppliedCollege></AppliedCollege>
                 </PrivateRoute>
+            },
+            {
+                path: 'mycollege',
+                element: <MyCollege></MyCollege>
             }
         ]
     }

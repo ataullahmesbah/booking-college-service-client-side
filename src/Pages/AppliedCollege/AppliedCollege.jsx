@@ -4,52 +4,62 @@ import { useContext } from "react";
 import { AuthContext } from "../Shared/Providers/AuthProviders";
 import Swal from "sweetalert2";
 import Container from "../Shared/Container";
+import { useLocation } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const img_hosting_token = import.meta.env.VITE_Image;
 
 
 const AppliedCollege = () => {
+
+    const location = useLocation();
+    const { college_name } = location.state || {};
+
     const [axiosSecure] = useAxiosSecure();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { user } = useContext(AuthContext);
     const hosting_img_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
 
-    const onSubmit = data => {
 
+    const onSubmit = (data) => {
         const formData = new FormData();
         formData.append('image', data.image[0])
-
+    
         fetch(hosting_img_url, {
-            method: 'POST',
-            body: formData
+          method: 'POST',
+          body: formData
         })
-            .then(res => res.json())
-            .then(imgResponse => {
-                if (imgResponse.success) {
-                    const imgURL = imgResponse.data.display_url;
-
-                    const { candidate_name, subject_name, email, phone_number, address, date_of_birth } = data;
-                    const appliedForm = { candidate_name, subject_name, phone_number: parseFloat(phone_number), image: imgURL, email, address, date_of_birth }
-
-                    console.log(appliedForm);
-                    axiosSecure.post('/application', appliedForm)
-                        .then(data => {
-                            console.log('Application Submit Form', data.data);
-                            if (data.data.insertedId) {
-                                reset();
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Application successfully',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            }
-                        })
+        .then(res => res.json())
+        .then(imgResponse => {
+          if (imgResponse.success) {
+            const imgURL = imgResponse.data.display_url;
+    
+            const { candidate_name, subject_name, email, phone_number, address, college, date_of_birth } = data;
+            const appliedForm = { candidate_name, subject_name, phone_number: parseFloat(phone_number), image: imgURL, email, address, date_of_birth, college }
+    
+            console.log(appliedForm);
+            axiosSecure.post('/application', appliedForm)
+              .then(data => {
+                console.log('Application Submit Form', data.data);
+                if (data.data.insertedId) {
+                  reset();
+                  toast.success("Application submitted successfully!");
+                  history.push("/"); // Redirect to another page after successful submission
                 }
-            })
-    };
+              })
+              .catch(error => {
+                console.log(error);
+                toast.error("Failed to submit application.");
+              });
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          toast.error("Failed to upload image.");
+        });
+      };
 
 
     return (
@@ -61,6 +71,23 @@ const AppliedCollege = () => {
                 <p className="text-center text-stone-500 font-serif mb-8">Please enter the Candidate Name, subject, Candidate Email, Candidate Phone number, address, date of birth, and a brief description of the application. <br /> Additionally, you can provide any relevant details or attach a photo if necessary.</p>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
+
+                    {/* candidate Application College  */}
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text font-semibold">Choose Your Dream College*</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="College Name"
+                            {...register("college", { required: true, maxLength: 120 })}
+                            defaultValue={college_name || ""} // Set college_name as the default value or an empty string if it's null
+                            className="input input-bordered w-full text-xl font-semibold"
+                            readOnly // Add the readOnly attribute to prevent user input
+                        />
+                    </div>
+
+
                     <div className="flex gap-4">
 
                         {/* Candidate Name */}
@@ -152,8 +179,9 @@ const AppliedCollege = () => {
                         <input type="file" {...register("image", { required: true })} className="file-input file-input-bordered  w-full max-w-xs" />
 
                     </div>
-                    <input className="btn btn-sm btn-secondary mt-2" type="submit" value="Submit" />
+                    <input className="btn btn-sm btn-accent mt-2" type="submit" value="Submit" />
                 </form>
+                <ToastContainer />
             </div>
         </Container>
     );
