@@ -63,7 +63,7 @@ const UserProfile = () => {
                             >
                                 Home
                             </Link>
-                            <Link to='/colleges'
+                            <Link to='/college'
                                 className='block md:hidden mx-[-40px] py-3 hover:bg-gray-400 transition '
                             >
                                 Colleges

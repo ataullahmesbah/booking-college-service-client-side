@@ -34,7 +34,7 @@ const Navbar = () => {
                         <div className=" space-x-5   hidden md:block  text-gray-300  tracking-wide">
 
                             <Link to='/' className="text-black font-semibold  hover:text-blue-700">Home</Link>
-                            <Link to='/colleges' className="text-black font-semibold  hover:text-blue-700">Colleges</Link>
+                            <Link to='/college' className="text-black font-semibold  hover:text-blue-700">Colleges</Link>
                             <Link to='/admission' className="text-black font-semibold  hover:text-blue-700">Admission</Link>
                             <Link to='/mycollege' className="text-black font-semibold  hover:text-blue-700">My College</Link>
                         </div>
