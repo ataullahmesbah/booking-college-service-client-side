@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Container from "../Shared/Container";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 
 const AllCollege = ({ allCollege }) => {
     const { _id, img, college_name, admission_dates, rating, number_of_research, } = allCollege;
@@ -18,10 +20,17 @@ const AllCollege = ({ allCollege }) => {
                         <p className="text-sm md:text-base"><span className=" font-semibold">Admission Date: </span> {admission_dates}</p>
 
                         <p className="text-sm md:text-base"><span className=" font-semibold">Number of Research:</span>  {number_of_research}</p>
-                        <p className="text-sm md:text-base"><span className=" font-semibold">Rating:</span> {rating}</p>
+                        <div className="flex items-center text-sm md:text-base gap-2 ">
+                    <span className="font-semibold">Rating:</span>
+                            <Rating style={{ maxWidth: 100 }} value={rating} readOnly />
+                            <span className='ms-2 text-black font-medium font-mono'>({rating})</span>
+                        </div>
+
+                        {/* <p className="text-sm md:text-base"><span className=" font-semibold">Rating:</span> {rating}</p> */}
+
+
                     </div>
 
-                    
                     <Link to={`/infocolleges/${_id}`}>
                         <button className="btn btn-secondary btn-sm w-full">Details</button>
                     </Link>

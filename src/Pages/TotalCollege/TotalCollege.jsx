@@ -16,10 +16,13 @@ const TotalCollege = ({ totalCollege }) => {
 
                     <h2 className="card-title font-serif text-xl md:text-2xl">{college_name}</h2>
                     <div className="space-y-3 flex-grow">
-                        <p className="text-sm md:text-base">Admission Date: {admission_dates}</p>
-                        <p className="text-sm md:text-base">Event: {event}</p>
-                        <p className="text-sm md:text-base">Research: {research}</p>
-                        <p className="text-sm md:text-base">Sports: {sports}</p>
+                        <p className="text-sm md:text-base"><span className="font-semibold">Admission Date:</span> {admission_dates}</p>
+
+                       
+
+                        <p className="text-sm md:text-base"><span className="font-semibold">Event:</span> {event}</p>
+                        <p className="text-sm md:text-base"><span className="font-semibold">Research:</span> {research}</p>
+                        <p className="text-sm md:text-base"><span className="font-semibold">Sports:</span> {sports}</p>
                     </div>
 
                     <Link to={`/collegedetails/${_id}`}>

@@ -82,7 +82,7 @@ const UserProfile = () => {
                             {
                                 user ? (
 
-                                    <div className="mx-[-40px] py-3 p-3 hover:bg-gray-200 transition  cursor-pointer"
+                                    <div className="mx-[-40px] py-3 hover:bg-gray-200 transition  cursor-pointer"
                                         onClick={logOut}
                                     >
                                         Logout
