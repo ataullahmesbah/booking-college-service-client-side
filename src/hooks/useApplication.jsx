@@ -5,7 +5,7 @@ const useApplication = (email) => {
   const { data: appliedForm = [] } = useQuery(
     ['appliedForm', email],
     async () => {
-      const res = await fetch(`http://localhost:5000/application?email=${email}`);
+      const res = await fetch(`https://booking-college-server-side-nine.vercel.app/application?email=${email}`);
       return res.json();
     },
     {

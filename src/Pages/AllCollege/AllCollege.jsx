@@ -21,7 +21,7 @@ const AllCollege = ({ allCollege }) => {
                         <p className="text-sm md:text-base"><span className=" font-semibold">Rating:</span> {rating}</p>
                     </div>
 
-                    {/* Make sure to use allCollege._id instead of _id */}
+                    
                     <Link to={`/infocolleges/${_id}`}>
                         <button className="btn btn-secondary btn-sm w-full">Details</button>
                     </Link>

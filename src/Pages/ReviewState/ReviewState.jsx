@@ -14,7 +14,7 @@ const ReviewState = () => {
             </h3>
             <p className="text-center text-gray-500 font-medium m-5">Discover what our students have to say about their experience</p>
             <Container>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4 lg:px-10 ">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 px-4  ">
                     {reviewSlice.map((reviewDetails) => (
                         <ReviewDetails key={reviewDetails._id} reviewDetails={reviewDetails} />
                     ))}
