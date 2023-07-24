@@ -49,16 +49,10 @@ const AppliedCollege = () => {
                   history.push("/"); // Redirect to another page after successful submission
                 }
               })
-              .catch(error => {
-                console.log(error);
-                toast.error("Failed to submit application.");
-              });
+              
           }
         })
-        .catch(error => {
-          console.log(error);
-          toast.error("Failed to upload image.");
-        });
+        
       };
 
 

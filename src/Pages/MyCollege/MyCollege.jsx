@@ -2,11 +2,14 @@ import { useContext } from "react";
 import useApplication from "../../hooks/useApplication";
 import Container from "../Shared/Container";
 import { AuthContext } from "../Shared/Providers/AuthProviders";
+import { Link } from "react-router-dom";
 
 
 const MyCollege = () => {
     const { user } = useContext(AuthContext);
     const appliedForm = useApplication(user?.email);
+
+
 
 
 
@@ -30,7 +33,7 @@ const MyCollege = () => {
                                 <th>Email</th>
                                 <th>Phone No.</th>
                                 <th>Review</th>
-                              
+
 
                             </tr>
                         </thead>
@@ -62,7 +65,9 @@ const MyCollege = () => {
                                     <td>{applied.phone_number
                                     }</td>
                                     <td>
-                                        <button className="btn btn-sm btn-accent">Review</button>
+                                        <Link to={`/review/${applied._id}`} className="btn btn-sm btn-accent">
+                                            Review
+                                        </Link>
                                     </td>
 
 

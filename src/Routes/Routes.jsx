@@ -10,6 +10,7 @@ import Admission from "../Pages/Admission/Admission";
 import AppliedCollege from "../Pages/AppliedCollege/AppliedCollege";
 import PrivateRoute from "./PrivateRoute";
 import MyCollege from "../Pages/MyCollege/MyCollege";
+import Review from "../Pages/Review/Review";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: 'mycollege',
                 element: <MyCollege></MyCollege>
+            },
+            {
+                path: 'review/:id',
+                element: <Review></Review>
             }
         ]
     }
